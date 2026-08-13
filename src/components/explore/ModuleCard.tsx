@@ -65,7 +65,6 @@ export default function ModuleCard({ module }: { module: Module }) {
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90">
           <Icon
             size={14}
-            weight="fill"
             className="text-black"
           />
         </div>
