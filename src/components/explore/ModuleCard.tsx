@@ -15,10 +15,7 @@ import {
 
 import type { Module } from "@/lib/data";
 
-const iconMap: Record<
-  string,
-  React.ComponentType<{ size?: number; className?: string; weight?: string }>
-> = {
+const iconMap: Record<string, React.ComponentType<any>> = {
   Motion: Wind,
   "3D": CubeTransparent,
   Metaverse: Globe,
