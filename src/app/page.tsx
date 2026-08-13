@@ -1,69 +1,83 @@
-import Image from "next/image";
+"use client";
+import HowItWorks from "@/components/home/HowItWorks";
+import { Geist } from "next/font/google";
+import { ArrowRight } from "lucide-react";
+import Nav from "@/components/Nav";
+import Link from "next/link";
 
-export default function Home() {
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-geist",
+});
+
+export default function NewHero() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <div
+        className={`relative h-screen w-full overflow-hidden bg-black ${geist.variable} font-[family-name:var(--font-geist)]`}
+      >
+        {/* Background video */}
+        <video
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_204221_5339e40b-e73d-4ab0-9c65-79c18c66fd50.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute h-full w-full object-cover object-[70%_center]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        {/* Navbar — swapped for the real site Nav, transparent variant */}
+        <Nav transparent />
+
+        {/* Hero content */}
+        <div className="relative z-10 flex h-[calc(100vh-80px)] flex-col justify-between px-6 pb-10 pt-24 sm:pb-12 md:px-12 md:pb-16 lg:px-16">
+          <div className="max-w-3xl">
+            <span
+              className="mb-4 block text-xs text-white/90 sm:mb-6 sm:text-sm"
+              style={{
+                animation: "fadeSlideUp 0.8s ease 0.2s both",
+              }}
+            ></span>
+
+            <h1
+              className="text-3xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+              style={{
+                animation: "fadeSlideUp 0.8s ease 0.4s both",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Shaping visual
+              <br />
+              narratives,
+              <br />
+              one pixel at a time.
+            </h1>
+          </div>
+
+          <div>
+            <p
+              className="mb-5 max-w-sm text-sm leading-relaxed text-white/60 sm:mb-6 sm:max-w-lg sm:text-base md:text-lg"
+              style={{
+                animation: "fadeSlideUp 0.8s ease 0.7s both",
+              }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              Turning vision into reality through craft, motion, and an
+              endless pursuit of beauty.
+            </p>
+
+            <Link
+  href="/explore"
+  className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition-transform hover:scale-105 sm:px-6 sm:py-3"
+  style={{ animation: "fadeSlideUp 0.8s ease 0.9s both" }}
+>
+  Explore Work
+  <ArrowRight size={16} />
+</Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      <HowItWorks />
+    </>
   );
 }
