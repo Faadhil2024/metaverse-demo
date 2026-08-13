@@ -17,7 +17,7 @@ import type { Module } from "@/lib/data";
 
 const iconMap: Record<
   string,
-  React.ComponentType<{ size?: number; className?: string }>
+  React.ComponentType<{ size?: number; className?: string; weight?: string }>
 > = {
   Motion: Wind,
   "3D": CubeTransparent,
